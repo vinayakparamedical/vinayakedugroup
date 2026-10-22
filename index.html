@@ -3018,6 +3018,171 @@
 
         }
 
+    
+
+        /* =====================================================
+           ADMISSION, REVIEW AND MAP ADDITIONS (NEW)
+        ====================================================== */
+
+        .apply-form-link {
+            background: var(--green-light);
+        }
+
+        .reviews-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 0 0 28px;
+        }
+
+        .review-submit-btn,
+        .map-directions-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 13px 20px;
+            border-radius: 999px;
+            background: var(--green);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 800;
+            box-shadow: 0 10px 24px rgba(6, 59, 37, 0.14);
+            transition: 0.25s ease;
+        }
+
+        .review-submit-btn:hover,
+        .map-directions-btn:hover {
+            background: var(--green-light);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .reviews-summary {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .reviews-summary strong {
+            color: var(--green);
+            font-size: 22px;
+        }
+
+        .summary-stars {
+            color: #f5b400;
+            letter-spacing: 2px;
+            font-size: 18px;
+        }
+
+        .contact-map-wrap {
+            margin-top: 42px;
+            padding: 24px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-map-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-bottom: 20px;
+        }
+
+        .contact-map-heading h3 {
+            margin-top: 8px;
+            color: var(--green-dark);
+            font-size: clamp(20px, 3vw, 28px);
+        }
+
+        .contact-map {
+            display: block;
+            width: 100%;
+            height: 360px;
+            border: 0;
+            border-radius: 16px;
+            background: #f4f7f3;
+        }
+
+        .apply-float {
+            position: fixed;
+            right: 22px;
+            bottom: 96px;
+            z-index: 998;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 54px;
+            padding: 0 20px;
+            border-radius: 999px;
+            background: var(--green);
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 900;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: 0.25s ease;
+        }
+
+        .apply-float:hover {
+            background: var(--green-light);
+            color: #ffffff;
+            transform: translateY(-4px);
+        }
+
+        .apply-float-icon {
+            display: none;
+            font-size: 23px;
+        }
+
+        @media (max-width: 768px) {
+            .reviews-actions {
+                align-items: stretch;
+            }
+
+            .review-submit-btn,
+            .map-directions-btn {
+                width: 100%;
+            }
+
+            .contact-map-wrap {
+                padding: 16px;
+            }
+
+            .contact-map {
+                height: 290px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .apply-float {
+                right: 15px;
+                bottom: 84px;
+                width: 58px;
+                height: 58px;
+                min-height: 58px;
+                padding: 0;
+                border-radius: 50%;
+            }
+
+            .apply-float-label {
+                display: none;
+            }
+
+            .apply-float-icon {
+                display: inline-block;
+            }
+        }
+
     </style>
 
 </head>
@@ -3128,6 +3293,20 @@
                 </a>
 
                 <a
+                    href="https://forms.gle/RaPwU3682n8HcebJ9"
+                    class="nav-cta apply-form-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <i class="fa-solid fa-file-signature"></i>
+
+                    Apply Now
+
+                </a>
+
+
+                <a
                     href="tel:9413455858"
                     class="nav-cta"
                 >
@@ -3224,6 +3403,19 @@
                             <i class="fa-brands fa-whatsapp"></i>
 
                             WhatsApp Us
+
+                        </a>
+
+                        <a
+                            href="https://forms.gle/RaPwU3682n8HcebJ9"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn-main"
+                        >
+
+                            <i class="fa-solid fa-file-signature"></i>
+
+                            Apply Now / Enquire Now
 
                         </a>
 
@@ -4853,7 +5045,28 @@
                 </div>
 
 
-                <div class="reviews-grid">
+                <div class="reviews-actions reveal">
+
+                    <div class="reviews-summary" id="approvedReviewsSummary" hidden>
+                        <strong><span id="approvedAverageRating">—</span> / 5</strong>
+                        <span class="summary-stars" aria-label="Average student rating">★★★★★</span>
+                        <span><span id="approvedReviewCount">0</span> approved reviews</span>
+                    </div>
+
+                    <a
+                        href="https://forms.gle/p8SMfojnC8tu3yMT6"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="review-submit-btn"
+                    >
+                        <i class="fa-solid fa-star"></i>
+                        Share Your Review
+                    </a>
+
+                </div>
+
+
+                <div class="reviews-grid" id="reviewsGrid">
 
 
                     <!-- NITESH SHARMA -->
@@ -5224,6 +5437,37 @@
 
             </div>
 
+
+            <div class="contact-map-wrap reveal">
+
+                <div class="contact-map-heading">
+                    <div>
+                        <span class="eyebrow">FIND OUR INSTITUTE</span>
+                        <h3>Visit Vinayak Group of Education</h3>
+                    </div>
+
+                    <a
+                        href="https://maps.app.goo.gl/Gc65rSBAhQyPYGwA7"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="map-directions-btn"
+                    >
+                        <i class="fa-solid fa-diamond-turn-right"></i>
+                        Get Directions
+                    </a>
+                </div>
+
+                <iframe
+                    class="contact-map"
+                    title="Map to Vinayak Group of Education, 3rd Floor, Prerna Tower, Didwana Road, Kuchaman City"
+                    src="https://www.google.com/maps?q=3rd%20Floor%2C%20Prerna%20Tower%2C%20Didwana%20Road%2C%20Kuchaman%20City&output=embed"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    allowfullscreen
+                ></iframe>
+
+            </div>
+
         </section>
 
 
@@ -5432,6 +5676,22 @@
         </div>
 
     </footer>
+
+
+    <!-- =====================================================
+         FLOATING ADMISSION SHORTCUT (NEW)
+    ====================================================== -->
+
+    <a
+        href="https://forms.gle/RaPwU3682n8HcebJ9"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="apply-float"
+        aria-label="Apply now using the admission enquiry form"
+    >
+        <span class="apply-float-label">Apply Now</span>
+        <i class="fa-solid fa-graduation-cap apply-float-icon" aria-hidden="true"></i>
+    </a>
 
 
     <!-- =====================================================
@@ -5658,6 +5918,90 @@
 
             }
         );
+
+
+        /* =====================================================
+           APPROVED STUDENT REVIEWS (OPTIONAL BACKEND)
+
+           After deploying the Google Apps Script that returns ONLY
+           approved reviews, paste its web-app URL into REVIEWS_API_URL.
+           Keep the response spreadsheet private; do not use its public URL.
+
+           Expected JSON shape:
+           {
+             "averageRating": 4.8,
+             "reviewCount": 12,
+             "reviews": [
+               { "name": "Student Name", "rating": 5, "review": "Review text" }
+             ]
+           }
+        ====================================================== */
+
+        const REVIEWS_API_URL = ""; // Add the approved-only Apps Script web-app URL after setup.
+
+        async function loadApprovedStudentReviews() {
+            if (!REVIEWS_API_URL) return;
+
+            const summary = document.getElementById("approvedReviewsSummary");
+            const average = document.getElementById("approvedAverageRating");
+            const count = document.getElementById("approvedReviewCount");
+            const grid = document.getElementById("reviewsGrid");
+
+            try {
+                const response = await fetch(REVIEWS_API_URL, { cache: "no-store" });
+                if (!response.ok) throw new Error("Could not load approved reviews.");
+
+                const data = await response.json();
+                const approvedReviews = Array.isArray(data.reviews) ? data.reviews : [];
+
+                if (typeof data.averageRating === "number" && Number.isFinite(data.averageRating)) {
+                    average.textContent = data.averageRating.toFixed(1);
+                }
+                count.textContent = Number.isFinite(Number(data.reviewCount))
+                    ? String(Number(data.reviewCount))
+                    : String(approvedReviews.length);
+                summary.hidden = false; // Show summary only after a successful response.
+
+                approvedReviews.forEach(function (review) {
+                    const card = document.createElement("article");
+                    card.className = "review-card reveal";
+
+                    const stars = document.createElement("div");
+                    stars.className = "review-stars";
+                    const rating = Math.max(0, Math.min(5, Math.round(Number(review.rating) || 0)));
+                    stars.textContent = "★".repeat(rating) + "☆".repeat(5 - rating);
+                    stars.setAttribute("aria-label", rating + " out of 5 stars");
+
+                    const reviewText = document.createElement("p");
+                    reviewText.textContent = String(review.review || "");
+
+                    const student = document.createElement("div");
+                    student.className = "review-student";
+                    const avatar = document.createElement("div");
+                    avatar.className = "student-avatar";
+                    const name = String(review.name || "Student").trim();
+                    avatar.textContent = name.split(/\s+/).map(function (part) { return part.charAt(0); }).join("").slice(0, 2).toUpperCase();
+
+                    const details = document.createElement("div");
+                    const studentName = document.createElement("strong");
+                    studentName.textContent = name;
+                    const label = document.createElement("span");
+                    label.textContent = "Verified published review";
+                    details.appendChild(studentName);
+                    details.appendChild(label);
+                    student.appendChild(avatar);
+                    student.appendChild(details);
+                    card.appendChild(stars);
+                    card.appendChild(reviewText);
+                    card.appendChild(student);
+                    grid.appendChild(card);
+                });
+            } catch (error) {
+                console.error("Approved student reviews could not be loaded.", error);
+            }
+        }
+
+        loadApprovedStudentReviews();
 
 
         /* =====================================================
